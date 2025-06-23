@@ -1,6 +1,13 @@
 # 🔍 LinkedIn Profile Summarizer  
 *A Chrome Extension + Flask GPT Backend to summarize LinkedIn profiles*
 
+<p align="left">
+  <a href="#"><img src="https://img.shields.io/badge/Made%20with-Python-blue?logo=python"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Built%20with-GPT-orange"></a>
+  <a href="https://github.com/kalpesh-projects/linkedin-profile-summarizer/issues"><img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg"></a>
+</p>
+
 This is a passion project to summarize any LinkedIn profile using OpenAI’s GPT API. Built with a Chrome extension frontend and a Python Flask backend.
 
 ---
