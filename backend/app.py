@@ -1,28 +1,32 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import openai
-import os
+from openai import OpenAI
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/gpt-summary", methods=["POST"])
 def generate_summary():
-    data = request.get_json()
-    prompt = data.get("prompt")
-
     try:
-        response = openai.ChatCompletion.create(
+        data = request.get_json()
+        prompt = data.get("prompt")
+
+        if not prompt:
+            return jsonify({"error": "No prompt received"}), 400
+
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You're a professional career assistant AI."},
+                {"role": "system", "content": "You're a helpful assistant."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=400
+            max_tokens=500
         )
 
         text = response.choices[0].message.content.strip()
@@ -35,7 +39,9 @@ def generate_summary():
         })
 
     except Exception as e:
+        print("❌ ERROR:", str(e))
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
+    print("🚀 Starting Flask app")
     app.run(debug=True)
