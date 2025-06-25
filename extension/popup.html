@@ -9,8 +9,13 @@
   <div class="container">
     <h2>📘 Profile Summary</h2>
     <p><strong>Here we go 🎉</strong></p>
+    
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Generating insights from profile...</p>
+    </div>
 
-    <div class="box">
+    <div id="content" class="box" style="display: none;">
       <p>📌 <strong>Summary:</strong></p>
       <div id="summary" class="section"></div>
 
@@ -21,7 +26,7 @@
       <textarea id="message" rows="4" readonly></textarea>
     </div>
 
-    <button id="copyBtn">📋 Copy to Clipboard</button>
+    <button id="copyBtn" style="display: none;">📋 Copy to Clipboard</button>
   </div>
   <script src="popup.js"></script>
 </body>
